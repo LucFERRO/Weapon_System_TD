@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector3 spawnBounds;
     [SerializeField] private Transform enemiesContainer;
     [SerializeField] private GameObject enemyPrefab;
+    public KillCountScript killCountScript;
 
     private float nextSpawnTime;
 
@@ -22,7 +23,8 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 rdPos = Random.insideUnitCircle;
         rdPos.y = 0;
-        Instantiate(enemyPrefab, transform.position + rdPos, Quaternion.identity, enemiesContainer);
+        GameObject spawnedEnemy = Instantiate(enemyPrefab, transform.position + rdPos, Quaternion.identity, enemiesContainer);
+        spawnedEnemy.GetComponent<HealthSystem>().killCountScript = killCountScript;
     }
 
     private void SetNextSpawnTime()

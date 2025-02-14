@@ -10,6 +10,7 @@ public class Laser : Weapon
         {
 
             GameObject spawnedProjectile = Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
+            spawnedProjectile.GetComponent<LaserProjectileProperties>().damage = weaponDamage;
             spawnedProjectile.GetComponent<Rigidbody>().linearVelocity = transform.forward * projectileSpeed;
             currentCooldown = shootingCooldown;
         }

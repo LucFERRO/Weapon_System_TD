@@ -37,6 +37,11 @@ public class WeaponSystem : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             currentWeapon.Shoot();
+        }        
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            currentWeapon.Release();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

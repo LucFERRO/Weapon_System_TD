@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2074329841482839147}
   - component: {fileID: 7977303895764573660}
   - component: {fileID: 3966805978103932183}
+  - component: {fileID: -5411072830514231307}
   m_Layer: 0
   m_Name: Projectile-FastLaser
-  m_TagString: Untagged
+  m_TagString: LaserProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &-5411072830514231307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074329841482839144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd9cd0b4d5d2b1488f3c33c8ff127f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &2074329841996897937
 GameObject:
   m_ObjectHideFlags: 0

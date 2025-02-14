@@ -3,17 +3,17 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float weaponDamage;
+    public int weaponDamage;
     public Transform shootingPoint;
     public float shootingCooldown;
     public float currentCooldown;
-    void Start()
+    public virtual void Start()
     {
         currentCooldown = shootingCooldown;
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (currentCooldown > 0)
         {
@@ -26,6 +26,10 @@ public class Weapon : MonoBehaviour
     }
 
     public virtual void Shoot()
+    {
+
+    }    
+    public virtual void Release()
     {
 
     }
