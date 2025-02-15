@@ -50,7 +50,7 @@ public class Beam : Weapon
 
         }
 
-    public override void Release()
+    public override void Disengage()
     {
             IsShooting = false;
     }

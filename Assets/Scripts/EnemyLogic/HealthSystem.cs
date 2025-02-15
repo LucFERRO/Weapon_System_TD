@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour
         {
             int incomingDamage = other.GetComponent<LaserProjectileProperties>().damage;
             Destroy(other.gameObject);
-            TakeDamage(incomingDamage * Time.deltaTime);
+            TakeDamage(incomingDamage);
         }
     }
 }

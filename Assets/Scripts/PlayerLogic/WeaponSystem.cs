@@ -41,7 +41,7 @@ public class WeaponSystem : MonoBehaviour
         
         if (Input.GetMouseButtonUp(0))
         {
-            currentWeapon.Release();
+            currentWeapon.Disengage();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

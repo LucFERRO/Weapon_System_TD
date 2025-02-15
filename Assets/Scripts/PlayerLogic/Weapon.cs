@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
     {
 
     }    
-    public virtual void Release()
+    public virtual void Disengage()
     {
 
     }
