@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
-    public Weapon[] weapons;
+    private Weapon[] weapons;
     public Weapon currentWeapon;
     public int currentWeaponIndex;
     public int CurrentWeaponIndex
@@ -27,6 +27,7 @@ public class WeaponSystem : MonoBehaviour
     }
     void Start()
     {
+        weapons = GetComponentsInChildren<Weapon>();
         CurrentWeaponIndex = 0;
         currentWeapon = weapons[currentWeaponIndex];
     }
@@ -55,6 +56,10 @@ public class WeaponSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SwitchWeapon(2);
+        }      
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SwitchWeapon(3);
         }
 
         if (Input.mouseScrollDelta.y > 0)

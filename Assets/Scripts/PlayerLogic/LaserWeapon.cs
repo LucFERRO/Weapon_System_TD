@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Laser : Weapon
+public class LaserWeapon : Weapon
 {
     public GameObject projectile;
     public float projectileSpeed;
@@ -8,7 +8,6 @@ public class Laser : Weapon
     {
         if (currentCooldown == 0)
         {
-
             GameObject spawnedProjectile = Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
             spawnedProjectile.GetComponent<LaserProjectileProperties>().damage = weaponDamage;
             spawnedProjectile.GetComponent<Rigidbody>().linearVelocity = transform.forward * projectileSpeed;

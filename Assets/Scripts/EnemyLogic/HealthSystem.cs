@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(float damage)
@@ -30,9 +30,9 @@ public class HealthSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("LaserProjectile"))
+        if (other.gameObject.CompareTag("Projectile"))
         {
-            int incomingDamage = other.GetComponent<LaserProjectileProperties>().damage;
+            int incomingDamage = other.GetComponent<LaserProjectileProperties>() ? other.GetComponent<LaserProjectileProperties>().damage : other.GetComponent<MissileProjectileProperties>().damage;
             Destroy(other.gameObject);
             TakeDamage(incomingDamage);
         }

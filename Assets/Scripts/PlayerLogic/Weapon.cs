@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public float currentCooldown;
     public virtual void Start()
     {
-        currentCooldown = shootingCooldown;
+        currentCooldown = 0;
     }
 
     // Update is called once per frame
