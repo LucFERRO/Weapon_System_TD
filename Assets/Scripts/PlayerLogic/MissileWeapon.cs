@@ -5,7 +5,6 @@ using UnityEngine;
 public class MissileWeapon : Weapon
 {
     public GameObject projectile;
-    private bool isTargeting;
     //public int projectileSpeed;
     //public int rotateSpeed;
     //public float maxDistancePredict = 100;
@@ -14,21 +13,25 @@ public class MissileWeapon : Weapon
     //public float deviationAmount = 50;
     //public float deviationSpeed = 2;
     //public GameObject[] targets;
+    public LineRenderer targettingBeam;
     public List<GameObject> targetObjects = new List<GameObject>();
-    //public bool IsTargeting
-    //{
-    //    get
-    //    {
-    //        return isTargeting;
-    //    }
-    //    set
-    //    {
-    //        isTargeting = value;
-    //    }
-    //}
+    private bool isTargeting;
+    public bool IsTargeting
+    {
+        get
+        {
+            return isTargeting;
+        }
+        set
+        {
+            isTargeting = value;
+            targettingBeam.enabled = value;
+        }
+    }
     public override void Start()
     {
         //currentCooldown = shootingCooldown;
+        targettingBeam = GetComponent<LineRenderer>();
     }
     public override void Shoot()
     {
@@ -41,14 +44,24 @@ public class MissileWeapon : Weapon
 
     private void AcquiringTargets()
     {
+        targettingBeam.SetPositions(new Vector3[] { shootingPoint.position, shootingPoint.position + shootingPoint.forward * 40f });
+        IsTargeting = true;
+
         RaycastHit[] hits;
         hits = Physics.RaycastAll(shootingPoint.position, shootingPoint.forward, 40f);
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
-            if (!targetObjects.Contains(hit.collider.gameObject))
+            GameObject hitGameObject = hit.collider.gameObject;
+            if (!targetObjects.Contains(hitGameObject))
             {
-                targetObjects.Add(hit.collider.gameObject);
+                targetObjects.Add(hitGameObject);
+                GameObject missileTargetedSprite = hitGameObject.transform.GetChild(0).gameObject;
+                if (missileTargetedSprite != null && missileTargetedSprite.CompareTag("MissileTargeted"))
+                {
+                    hitGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+ 
                 //Debug.Log($"added new target. New target count {targetObjects.Count}");
             }
         }
@@ -80,7 +93,12 @@ public class MissileWeapon : Weapon
             return;
         }
         LaunchMissiles();
+        foreach (GameObject targetObject in targetObjects)
+        {
+            targetObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
         targetObjects.Clear();
+        IsTargeting = false;
         currentCooldown = shootingCooldown;
     }
 }

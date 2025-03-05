@@ -7,7 +7,7 @@ public class MissileProjectileProperties : MonoBehaviour
     public int damage;
     private Rigidbody rb;
     private int speed = 10;
-    private int rotateSpeed = 100;
+    private int rotateSpeed = 200;
     private float maxDistancePredict = 100;
     private float minDistancePredict = 5;
     private float maxTimePrediction = 5;
